@@ -2,6 +2,7 @@ FROM jupyter/datascience-notebook
 USER root
 LABEL maintainer="Naoya Ikeda <n_ikeda@hotmail.com>"
 COPY azcopy_linux_amd64_10.2.1/azcopy /usr/local/bin
+ENV ACCEPT_EULA=Y
 RUN echo "now building..." && \
     cd /root && \
     apt update && \
@@ -9,7 +10,7 @@ RUN echo "now building..." && \
     curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && \
     curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list && \
     apt update && \
-    apt install -y vim openjdk-11-jdk libv8-3.14-dev libxml2-dev libcurl4-openssl-dev libssl-dev unixodbc freetds-bin freetds-common tdsodbc unixodbc-dev && \
+    apt install -y vim openjdk-11-jdk libv8-3.14-dev libxml2-dev libcurl4-openssl-dev libssl-dev unixodbc freetds-bin freetds-common tdsodbc unixodbc-dev mssql-tools && \
     conda update -n base -c defaults conda -y && \
     conda install python=3.6 rise pyodbc pymssql -y && \
     jupyter-nbextension install rise --py --sys-prefix && \
