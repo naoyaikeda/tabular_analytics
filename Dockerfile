@@ -18,8 +18,9 @@ RUN echo "now building..." && \
     conda install -c h2oai h2o && \
     conda install -c conda-forge xgboost lightgbm fbprophet lime shap r-shinystan && \
     conda install -c r rpy2 r-survival r-ggplot2 r-bnsl r-tidyverse && \
-    conda install -c conda-forge r-bh r-odbc r-reticulate r-prophet r-xgboost r-lightgbm r-ggally r-v8 r-rcpp r-fitdistrplus r-bnlearn r-rstanarm r-devtools r-ggextra && \
-    pip install optuna
+    conda install -c conda-forge r-bh r-odbc r-reticulate r-prophet r-xgboost r-lightgbm r-ggally r-v8 r-rcpp r-fitdistrplus r-bnlearn r-rstanarm r-devtools r-ggextra 
+RUN conda install -y -c r r-base=3.6.1=hce969dd_0
+RUN pip install optuna
 
 RUN curl -L  "https://oscdl.ipa.go.jp/IPAexfont/ipaexg00301.zip" > font.zip && \
     unzip font.zip && \
